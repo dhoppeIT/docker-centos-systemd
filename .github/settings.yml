@@ -3,7 +3,7 @@ repository:
   name: docker-centos-systemd
   description: CentOS image including Systemd
   homepage: https://hub.docker.com/repository/docker/dhoppeit/docker-centos-systemd/
-  topics: docker, buildx, centos-7, linux/amd64, linux/arm64, linux/arm/v7
+  topics: docker, buildx, centos-7, amd64, arm64, arm
   private: false
   has_issues: true
   has_projects: false

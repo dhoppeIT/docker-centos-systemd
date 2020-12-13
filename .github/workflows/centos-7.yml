@@ -28,5 +28,5 @@ jobs:
           docker buildx build \
             --file ./centos-7.Dockerfile ./ \
             --output "type=image,push=true" \
-            --platform linux/amd64,linux/arm64,linux/arm/v7 \
+            --platform linux/amd64,linux/arm64 \
             --tag dhoppeit/docker-centos-systemd:7

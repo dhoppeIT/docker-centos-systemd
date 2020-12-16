@@ -6,8 +6,9 @@ This [Docker](https://www.docker.com) image can be used to test [Ansible](https:
 
 |Branch|CentOS version|Docker image tag|
 |------|--------------|----------------|
-|master|7             |7               |
+|master|8             |8               |
 |7     |7             |7               |
+|8     |8             |8               |
 
 ## Usage
 
@@ -17,20 +18,20 @@ This [Docker](https://www.docker.com) image can be used to test [Ansible](https:
 docker run \
   --cap-add SYS_ADMIN \
   --detach \
-  --name centos-7 \
+  --name centos-8 \
   --rm \
   --volume /sys/fs/cgroup:/sys/fs/cgroup:ro \
-  dhoppeit/docker-centos-systemd:7
+  dhoppeit/docker-centos-systemd:8
 ```
 
 ### Enter the container
 
 ```console
-docker exec -it centos-7 bash
+docker exec -it centos-8 bash
 ```
 
 ### Stop the container
 
 ```console
-docker stop centos-7
+docker stop centos-8
 ```

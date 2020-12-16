@@ -17,19 +17,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      - name: Docker Hub (login)
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Login to Docker Hub
         uses: docker/login-action@v1
         with:
           username: "${{ secrets.DOCKER_USERNAME }}"
           password: "${{ secrets.DOCKER_PASSWORD }}"
-      - name: Docker Buildx (qemu)
-        uses: docker/setup-qemu-action@v1
-      - name: Docker Buildx (buildkit)
-        uses: docker/setup-buildx-action@v1
-      - name: Docker Buildx (build)
-        run: |
-          docker buildx build \
-            --file ./centos-7.Dockerfile ./ \
-            --output "type=image,push=true" \
-            --platform linux/amd64,linux/arm64 \
-            --tag dhoppeit/docker-centos-systemd:7
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./centos-7.Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: dhoppeit/docker-centos-systemd:7
